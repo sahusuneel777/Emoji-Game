@@ -1,0 +1,36 @@
+.results-card {
+  background-color: #fffff333;
+  border-radius: 10px;
+  border: none;
+  padding: 16px;
+  display: flex;
+}
+
+.playAgain-button {
+  background-color: #ffce27;
+  border-radius: 10px;
+  padding: 5px;
+  font-family: roboto;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.score {
+  color: #6a59ff;
+  font-size: 16px;
+  font-weight: 600;
+}
+.result {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+}
+.best-score {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+}
+.result-image {
+  height: 250px;
+  width: 250px;
+}
