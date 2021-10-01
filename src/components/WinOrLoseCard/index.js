@@ -6,16 +6,15 @@ const WinOrLossCard = props => {
 
   const resultImage = isWin
     ? 'https://assets.ccbp.in/frontend/react-js/won-game-img.png'
-    : 'https://assets.ccbp.in/frontend/react-js/loss-game-img.png'
+    : 'https://assets.ccbp.in/frontend/react-js/lose-game-img.png'
 
-  const result = isWin ? 'Won' : 'Loss'
+  const result = isWin ? 'You Won' : 'You Lose'
   const status = isWin ? 'Best Score' : 'Score'
-  console.log(currentScore)
-  console.log(resultImage)
+
   return (
     <div className="results-card">
       <div>
-        <h1 className="result">You {result}</h1>
+        <h1 className="result">{result}</h1>
         <p className="best-score">{status}</p>
         <p className="score">{currentScore}/12</p>
         <button

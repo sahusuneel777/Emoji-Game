@@ -23,14 +23,17 @@ class EmojiGame extends Component {
   }
 
   clickEmoji = id => {
-    // const {emojisList} = this.props
+    const {emojisList} = this.props
     const {clickedEmojisList} = this.state
     const isEmojiPresent = clickedEmojisList.includes(id)
     const currentScore = clickedEmojisList.length
-    // console.log(currentScore)
+
     if (isEmojiPresent) {
       this.finishEmojiGame(currentScore)
     } else {
+      if (emojisList.length - 1 === currentScore) {
+        this.finishEmojiGame(emojisList.length)
+      }
       this.setState(prevState => ({
         clickedEmojisList: [...prevState.clickedEmojisList, id],
       }))
@@ -44,11 +47,9 @@ class EmojiGame extends Component {
 
   toRenderEmojiList = () => {
     const shuffledEmojisList = this.shuffledEmojisList()
-    const {clickedEmojisList, HighScore} = this.state
 
     return (
       <>
-        <NavBar currentScore={clickedEmojisList.length} HighScore={HighScore} />
         <ul className="emoji-list-container">
           {shuffledEmojisList.map(eachEmoji => (
             <EmjoiCard
@@ -69,8 +70,8 @@ class EmojiGame extends Component {
   toRenderScoreCard = () => {
     const {clickedEmojisList} = this.state
     const {emojisList} = this.props
-    console.log(`c:${clickedEmojisList.length}`)
     const isWin = clickedEmojisList.length === emojisList.length
+    console.log(isWin)
     return (
       <WinOrLoseCard
         currentScore={clickedEmojisList.length}
@@ -83,10 +84,16 @@ class EmojiGame extends Component {
   render() {
     // const {emojisList} = this.props
     const {isGameIsOn, clickedEmojisList, HighScore} = this.state
-    console.log(`H:${HighScore}`)
+    console.log(`High:${HighScore}`)
+    console.log(`Current:${clickedEmojisList.length}`)
 
     return (
       <div className="app-container">
+        <NavBar
+          isGameIsOn={isGameIsOn}
+          currentScore={clickedEmojisList.length}
+          HighScore={HighScore}
+        />
         <div className="emojees-list">
           {isGameIsOn ? this.toRenderEmojiList() : this.toRenderScoreCard()}
         </div>

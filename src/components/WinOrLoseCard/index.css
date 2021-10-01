@@ -4,6 +4,7 @@
   border: none;
   padding: 16px;
   display: flex;
+  margin-top: 20px;
 }
 
 .playAgain-button {
